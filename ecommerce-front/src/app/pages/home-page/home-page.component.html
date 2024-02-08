@@ -1,0 +1,23 @@
+<!-- Aqui va el navbarcomponent -->
+<div  class="bg-customRed-500">
+  <div class="w-full flex mb-5">
+    <div class="ml-6 w-2/4 flex flex-col justify-center items-start">
+      <h1 class="mb-10 text-5xl text-gray-900">
+        Encuentra los mejores productos del mercado aqui
+      </h1>
+      <a
+        class="cursor-pointer rounded-md border border-transparent bg-gray-950 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >Ver productos</a
+      >
+    </div>
+    <div class="w-2/4 flex gap-2 overflow-hidden">
+      <img class="w-1/2" src="../../../assets/HomePage/producto1.jpg" />
+      <img class="w-1/2" src="../../../assets/HomePage/producto2.jpg" />
+    </div>
+  </div>
+  <div class="flex justify-around">
+    <app-icon-container title="Mejores precios" text="Tu tienda de preferencia con los mejores precios siempre" [icon]="iconCofee"/>
+    <app-icon-container title="Facilidad de compra" text="Elige tus productos y agregalos al carrito"  [icon]="iconStar"/>
+    <app-icon-container title="Tu cuenta" text="Crea tu cuenta para disfrutar de descuentos exclusivos" [icon]="iconGift"/>
+  </div>
+</div>
