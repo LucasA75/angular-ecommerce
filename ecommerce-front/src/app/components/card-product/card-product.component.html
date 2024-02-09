@@ -1,0 +1,31 @@
+<div class="bg-white grid grid-cols-4 ">
+  <div class="group z-10 relative flex rounded-md flex-col items-center shadow-2xl">
+    <div class="my-4 w-full ml-24 flex flex-col justify-start">
+        <h3 class="text-xl text-gray-700">
+          <a href="#">
+            <span aria-hidden="true" class="font-bold italic">
+                {{titleProduct}}
+            </span>
+          </a>
+        </h3>
+        <p class="mt-1 text-sm text-gray-500">{{description}}</p>
+    </div>
+    <div
+      class="mb-3 aspect-h-1 aspect-w-1 h-56 w-2/3 overflow-hidden rounded-full bg-gray-200 lg:aspect-none group-hover:opacity-75"
+    >
+      <img
+        src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+        alt="Front of men&#039;s Basic Tee in black."
+        class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+      />
+    </div>
+    <div class="w-fit h-fit relative mb-4 ">
+        <button class=" w-fit px-3 py-1 bg-yellow-200 border border-black rounded relative z-10">
+            <span class="text-sm font-semibold text-gray-900">
+                Add to card - ${{value}}        
+            </span>
+        </button>
+        <div class="bg-transparent border border-black rounded w-full h-full absolute top-1 left-1 z-0"></div>
+    </div>
+    </div>
+</div>
