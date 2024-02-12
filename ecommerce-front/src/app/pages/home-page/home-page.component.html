@@ -21,4 +21,11 @@
     <app-icon-container title="Tu cuenta" text="Crea tu cuenta para disfrutar de descuentos exclusivos" [icon]="iconGift"/>
   </div>
 </div>
-<app-card-product/>
+<div class="container flex flex-wrap">
+  @for (product of products; track product.id) {
+    <app-card-product [description]= product.value.marca  [description]=products?.values?.name!/> 
+  } @empty {
+    <li> There are no items. </li>
+  }
+  <app-card-product/>
+</div>

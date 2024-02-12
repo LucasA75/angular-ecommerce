@@ -5,6 +5,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faGift } from '@fortawesome/free-solid-svg-icons';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
+import { ProductService } from '../../services/product.service';
+import { ProductID } from '../../interfaces/ProductResponse';
 
 @Component({
   selector: 'app-home-page',
@@ -17,4 +19,10 @@ export class HomePageComponent {
   iconCofee = faCoffee
   iconStar = faStar
   iconGift = faGift
+  products: ProductID[] | null
+  
+  constructor(product : ProductService) {    
+    this.products = product.getProducts().slice(0,8)
+  }
+  
 }
