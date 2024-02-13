@@ -20,9 +20,9 @@ export class HomePageComponent {
   iconStar = faStar
   iconGift = faGift
   products: ProductID[] | null
-  
-  constructor(product : ProductService) {    
-    this.products = product.getProducts().slice(0,8)
+
+  constructor(product : ProductService) {
+    this.products = product.getProducts().filter(x => x.value.marca != "SIN MARCA").slice(0,15)
   }
-  
+
 }
