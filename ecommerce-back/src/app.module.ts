@@ -5,13 +5,17 @@ import { ProductsModule } from './products/products.module';
 import { ClientsModule } from './clients/clients.module';
 import { OrdersModule } from './orders/orders.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CartModule } from './cart/cart.module';
+
+require('dotenv').config({ path: __dirname+'/.env' });
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/tutorial'),
+    MongooseModule.forRoot(process.env.DATABASE_URI),
     ProductsModule,
      ClientsModule,
-      OrdersModule],
+      OrdersModule,
+      CartModule],
   controllers: [AppController],
   providers: [AppService],
 })
