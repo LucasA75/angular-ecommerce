@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateClientDto {
-  @ApiProperty({ example: '1123123' }) 
-  readonly _id: string; 
 
   @ApiProperty({ example: 'John Doe' })
   readonly name: string;
