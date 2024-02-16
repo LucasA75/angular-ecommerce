@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "g:c": "ng g c pages/PageNotFound --skip-tests",
-    "g:s":"ng g s services/product --skip-tests"
+    "g:s":"ng g s services/order --skip-tests"
   },
   "private": true,
   "dependencies": {

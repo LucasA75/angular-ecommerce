@@ -6,7 +6,6 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faGift } from '@fortawesome/free-solid-svg-icons';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
 import { ProductService } from '../../services/product.service';
-import { ProductID } from '../../interfaces/ProductResponse';
 import { Product } from '../../interfaces/Product';
 
 @Component({
@@ -30,7 +29,7 @@ export class HomePageComponent implements OnInit{
   }
 
   getListProduct(){
-    return this.product.getProducts().subscribe(data =>{
+    return this.product.getAllProducts().subscribe(data =>{
       this.products = data
     })
   }
