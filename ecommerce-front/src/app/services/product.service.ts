@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import * as json from '../../test/productos.json'
-import { ProductID } from '../interfaces/ProductResponse';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Product } from '../interfaces/Product';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
+  private apiUrl = 'http://localhost:3000';
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
-
-  getProducts(): ProductID[]{
-    return json.rows as ProductID[]
+  getProducts(): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(this.apiUrl + '/products');
   }
 }

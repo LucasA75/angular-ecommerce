@@ -1,8 +1,12 @@
 export interface Product {
-    _id:          string;
-    _rev:         string;
-    uuid:         string;
-    marca:        string;
-    nombre:       string;
-    presentacion: string;
+    _id:         string;
+    name:        string;
+    sku:         string;
+    price:       number;
+    rating:      number;
+    description: string;
+    brand:       string;
+    stock:       number;
+    images:      string[];
+    __v:         number;
 }
