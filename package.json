@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "back": "nest new ecommerce-back"
+    "back": "nest new ecommerce-back",
+    "start:back": "cd ecommerce-back && npm run start:dev",
+    "start:front": "cd ecommerce-front && npm run start",
+    "concurrency": "concurrently \"npm run start:back\" \"npm run start:front\""
   },
   "author": "",
   "license": "ISC"
