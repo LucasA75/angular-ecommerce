@@ -6,17 +6,22 @@ import { ClientsModule } from './clients/clients.module';
 import { OrdersModule } from './orders/orders.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CartModule } from './cart/cart.module';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './configuration';
 
-require('dotenv').config({ path: __dirname+'/.env' });
+const mongoConecction = configuration().database.url + configuration().database.db
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.DATABASE_URI),
+    ConfigModule.forRoot({load: [configuration]}),
+    MongooseModule.forRoot(mongoConecction),
     ProductsModule,
      ClientsModule,
       OrdersModule,
       CartModule],
-  controllers: [AppController],
+  controllers: [AppController], 
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(){}
+}

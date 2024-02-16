@@ -2,7 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-async function bootstrap() {
+
+async function bootstrap() { 
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder() 
     .setTitle('MongoDB ecommerce REST API')
