@@ -1,12 +1,13 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose'; 
+import { Cart } from 'src/cart/schemas/cart.schemas';
 import { Client } from 'src/clients/schemas/client.schema';
 import { Product } from 'src/products/schemas/product.schema';
 
-export type CartDocument = Cart & Document; 
+export type OrderDocument = Order & Document; 
 
 @Schema() 
-export class Cart {
+export class Order {
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Client' })
   client: Client;
@@ -15,13 +16,16 @@ export class Cart {
   totalPrice: number;
 
   @Prop()
-  amount: number;
+  shippingAdress: number;
 
   @Prop()
-  status: string
+  date: Date;
 
-  @Prop([Product]) 
-  product: Product[];
+  @Prop()
+  status: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Cart' }) 
+  products: Cart;
 }
 
-export const CartSchema = SchemaFactory.createForClass(Cart);
+export const OrderSchema = SchemaFactory.createForClass(Order);

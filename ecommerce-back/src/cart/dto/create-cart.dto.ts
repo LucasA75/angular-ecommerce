@@ -12,6 +12,9 @@ export class CreateCartDto {
   @ApiProperty({ example: 2 })
   amount: number;
 
+  @ApiProperty({ example: "inProgress" })
+  status: string
+
   @ApiProperty({
     example: [
       {
