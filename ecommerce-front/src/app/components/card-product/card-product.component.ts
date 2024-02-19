@@ -1,7 +1,8 @@
 import { Component, Inject, Input } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs';
+import { Product } from '../../interfaces/Product';
 
 @Component({
   selector: 'app-card-product',
@@ -12,14 +13,13 @@ import { switchMap } from 'rxjs';
 })
 export class CardProductComponent {
 
-  constructor(private route :ActivatedRoute){
+  constructor(private route : ActivatedRoute,  private router: Router  ){
 
   }
-  @Input() titleProduct = "Example title"
-  @Input() value = 123
-  @Input() description = "Description product"
+  @Input() product : Product | null = null
 
-  navegateToProduct(){
+  navegateToDetailProduct(productId : string){
+    this.router.navigate(["/product",productId])
   }
 
 }

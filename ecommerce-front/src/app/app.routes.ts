@@ -6,6 +6,6 @@ import { DetailProductPageComponent } from './pages/detail-product-page/detail-p
 export const routes: Routes = [
 
     { path: '', component: HomePageComponent },
+    {path: "product/:id", component: DetailProductPageComponent},
     { path: '**', component: PageNotFoundComponent },
-    {path: "product/:id", component: DetailProductPageComponent}
 ];
