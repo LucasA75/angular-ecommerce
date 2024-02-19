@@ -16,8 +16,8 @@ export class ProductService {
     return this.http.get<Array<Product>>(this.apiUrl + this.urlClass);
   }
 
-  getProduct(id: string){
-    return this.http.get(this.apiUrl + this.urlClass + `/${id}`)
+  getProduct(id: string) : Observable<Product>{
+    return this.http.get<Product>(this.apiUrl + this.urlClass + `/${id}`)
   }
 
   updateProduct(id: string, editProduct: Product){

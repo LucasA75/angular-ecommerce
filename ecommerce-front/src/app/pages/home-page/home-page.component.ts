@@ -7,6 +7,8 @@ import { faGift } from '@fortawesome/free-solid-svg-icons';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../interfaces/Product';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -20,8 +22,9 @@ export class HomePageComponent implements OnInit{
   iconStar = faStar
   iconGift = faGift
   products: Product[] | null = null
+  selectProductId: string| null = null
 
-  constructor(private product : ProductService) {
+  constructor(private productService : ProductService,private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -29,8 +32,18 @@ export class HomePageComponent implements OnInit{
   }
 
   getListProduct(){
-    return this.product.getAllProducts().subscribe(data =>{
+    return this.productService.getAllProducts().subscribe(data =>{
       this.products = data
     })
   }
+
+  getProductId(){
+    this.route.paramMap.pipe(
+      switchMap(param =>{
+        this.selectProductId = param.get("id")
+        return this.productService.getAllProducts()
+      })
+    )
+  }
+
 }

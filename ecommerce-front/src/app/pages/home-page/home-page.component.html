@@ -23,7 +23,7 @@
 </div>
 <div class=" flex gap-3 flex-wrap">
   @for (product of products; track product._id) {
-    <app-card-product [titleProduct]= product.brand  [description]= product.name/>
+    <app-card-product  [titleProduct]= product.brand  [description]= product.name/>
   } @empty {
     <li> There are no items. </li>
   }
