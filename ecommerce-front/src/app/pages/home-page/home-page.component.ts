@@ -9,41 +9,49 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../interfaces/Product';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { CartPopupComponent } from '../../components/cart-popup/cart-popup.component';
+import { PopupService } from '../../services/pop-up.service';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [IconContainerComponent,FontAwesomeModule,CardProductComponent],
+  imports: [IconContainerComponent, FontAwesomeModule, CardProductComponent, CartPopupComponent],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrl: './home-page.component.css',
 })
-export class HomePageComponent implements OnInit{
-  iconCofee = faCoffee
-  iconStar = faStar
-  iconGift = faGift
-  products: Product[] | null = null
-  selectProductId: string| null = null
-
-  constructor(private productService : ProductService,private route: ActivatedRoute) {
-  }
+export class HomePageComponent implements OnInit {
+  iconCofee = faCoffee;
+  iconStar = faStar;
+  iconGift = faGift;
+  products: Product[] | null = null;
+  selectProductId: string | null = null;
+  
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private popupService: PopupService
+  ) {}
 
   ngOnInit(): void {
-    this.getListProduct()
+    this.getListProduct();
   }
 
-  getListProduct(){
-    return this.productService.getAllProducts().subscribe(data =>{
-      this.products = data
-    })
+  getListProduct() {
+    return this.productService.getAllProducts().subscribe((data) => {
+      this.products = data;
+    });
   }
 
-  getProductId(){
+  getProductId() {
     this.route.paramMap.pipe(
-      switchMap(param =>{
-        this.selectProductId = param.get("id")
-        return this.productService.getAllProducts()
+      switchMap((param) => {
+        this.selectProductId = param.get('id');
+        return this.productService.getAllProducts();
       })
-    )
+    );
   }
 
+  openPopup() {
+    this.popupService.openPopup();
+  }
 }

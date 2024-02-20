@@ -18,6 +18,7 @@ export class CardProductComponent {
   @Input() description = "Description product"
 
   navegateToProduct(){
+    
   }
 
 }

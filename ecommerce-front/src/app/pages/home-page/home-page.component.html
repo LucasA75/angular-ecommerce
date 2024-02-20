@@ -21,7 +21,7 @@
     <app-icon-container title="Tu cuenta" text="Crea tu cuenta para disfrutar de descuentos exclusivos" [icon]="iconGift"/>
   </div>
 </div>
-<div class=" flex gap-3 flex-wrap">
+<div class=" flex gap-3 flex-wrap relative -z-10">
   @for (product of products; track product._id) {
     <app-card-product  [titleProduct]= product.brand  [description]= product.name/>
   } @empty {
@@ -29,3 +29,6 @@
   }
   <app-card-product/>
 </div>
+<app-cart-popup/>
+<button (click)="openPopup()">Abrir Popup</button>
+
