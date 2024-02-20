@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PopupService } from '../../services/pop-up.service';
+import { Cart } from '../../interfaces/Cart';
 
 @Component({
   selector: 'app-cart-popup',
@@ -11,7 +12,7 @@ import { PopupService } from '../../services/pop-up.service';
 export class CartPopupComponent implements OnInit {
   
   isOpen = false;
-  
+  @Input() cart : Cart | undefined = undefined
   constructor(private popupService: PopupService) {}
 
   ngOnInit() {
