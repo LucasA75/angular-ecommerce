@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../../interfaces/Product';
 
 @Component({
   selector: 'app-card-product',
@@ -10,15 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CardProductComponent {
 
-  constructor(private route :ActivatedRoute){
+  constructor(private route : ActivatedRoute,  private router: Router  ){
 
   }
-  @Input() titleProduct = "Example title"
-  @Input() value = 123
-  @Input() description = "Description product"
+  @Input() product : Product | null = null
 
-  navegateToProduct(){
-    
+  navegateToDetailProduct(productId : string){
+    this.router.navigate(["/product",productId])
   }
 
 }

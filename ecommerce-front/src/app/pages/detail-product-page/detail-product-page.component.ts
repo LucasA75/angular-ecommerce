@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Product } from '../../interfaces/Product';
 import { ProductService } from '../../services/product.service';
 
@@ -12,7 +11,8 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './detail-product-page.component.css',
 })
 export class DetailProductPageComponent implements OnInit {
-  product: Observable<Product> | undefined;
+  product: Product | undefined;
+  amountProduct: number = 1
 
   constructor(
     private route: ActivatedRoute,
@@ -22,8 +22,29 @@ export class DetailProductPageComponent implements OnInit {
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-    this.product = this.productService.getProduct(productId!);
+    this.productService.getProduct(productId!).subscribe({
+      next : (product: Product) => {
+        this.product = product;
+        console.log(this.product);
+      },
+      error: (error) => console.error('Product not found:', error),
+    }
+    );
+    console.log(this.product);
   }
+
+  addAmountProduct(){
+    if(this.product!.stock >  this.amountProduct){
+      this.amountProduct++
+    }
+  }
+
+  reduceAmountProduct(){
+    if(this.amountProduct > 1){
+      this.amountProduct--
+    }
+  }
+
 
   goToProduct(product: Product) {
     const productId = product ? product._id : null;
