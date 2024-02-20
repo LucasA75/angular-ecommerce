@@ -1,7 +1,5 @@
-import { Component, Inject, Input } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-card-product',
