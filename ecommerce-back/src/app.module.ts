@@ -7,6 +7,7 @@ import { OrdersModule } from './orders/orders.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CartModule } from './cart/cart.module';
 import { ConfigModule } from '@nestjs/config';
+import { OrderDetailModule } from './order-detail/order-detail.module';
 import configuration from './configuration';
 
 const mongoConecction = configuration().database.url + configuration().database.db
@@ -18,7 +19,8 @@ const mongoConecction = configuration().database.url + configuration().database.
     ProductsModule,
      ClientsModule,
       OrdersModule,
-      CartModule],
+      CartModule,
+      OrderDetailModule],
   controllers: [AppController], 
   providers: [AppService],
 })

@@ -26,6 +26,6 @@ export class CreateProductDto {
   @ApiProperty({ example: 44 })
   readonly stock: number;
 
-  @ApiProperty({ example: ['https://m.media-amazon.com/images/I/41fveBeDWmL._SY346_.jpg', 'https://m.media-amazon.com/images/I/41fveBeDWmL._SY346_.jpg'] }) 
+  @ApiProperty({ example: ['https://images.unsplash.com/photo-1620360289100-030b032e5a27', 'https://images.unsplash.com/photo-1620360289100-030b032e5a27'] }) 
   readonly images: string[];
 }
