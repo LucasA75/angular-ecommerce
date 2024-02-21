@@ -22,11 +22,9 @@
                               <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">{{prod._id}}</p>
                               <div class="flex items-center justify-between w-full pt-1">
                                   <p class="text-base font-black leading-none text-gray-800">{{prod.name}}</p>
-                                  <select aria-label="Select quantity" class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
-                                      <option>01</option>
-                                      <option>02</option>
-                                      <option>03</option>
-                                  </select>
+                                  <p aria-label="Select quantity" class="p-2 px-1 border border-gray-200 mr-6 focus:outline-none">
+                                     Cantity: {{prod.cantity}}
+                                  </p>
                               </div>
                               <p class="w-96 text-xs leading-3 text-gray-600">{{prod.description}}</p>
                               <div class="flex items-center justify-between pt-5">
@@ -50,21 +48,19 @@
                             <p class="lg:text-4xl text-3xl font-black leading-9 text-gray-800">Summary</p>
                             <div class="flex items-center justify-between pt-16">
                                 <p class="text-base leading-none text-gray-800">Subtotal</p>
-                                <p class="text-base leading-none text-gray-800">$9,000</p>
+                                <p class="text-base leading-none text-gray-800">${{cart?.totalPrice}}</p>
                             </div>
+                            <!--                             
                             <div class="flex items-center justify-between pt-5">
                                 <p class="text-base leading-none text-gray-800">Shipping</p>
-                                <p class="text-base leading-none text-gray-800">$30</p>
-                            </div>
-                            <div class="flex items-center justify-between pt-5">
-                                <p class="text-base leading-none text-gray-800">Tax</p>
-                                <p class="text-base leading-none text-gray-800">$35</p>
-                            </div>
+                                <p class="text-base leading-none text-gray-800">$1500</p>
+                            </div> 
+                            -->
                         </div>
                         <div>
                             <div class="flex items-center pb-6 justify-between lg:pt-5 pt-20">
                                 <p class="text-2xl leading-normal text-gray-800">Total</p>
-                                <p class="text-2xl font-bold leading-normal text-right text-gray-800">$10,240</p>
+                                <p class="text-2xl font-bold leading-normal text-right text-gray-800">${{cart?.totalPrice}}</p>
                             </div>
                             <button class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">Checkout</button>
                         </div>

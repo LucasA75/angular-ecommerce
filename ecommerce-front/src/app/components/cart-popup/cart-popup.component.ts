@@ -22,9 +22,7 @@ export class CartPopupComponent implements OnInit {
     });
 
     this.cartService.cart$.pipe().subscribe((cart) => {
-      console.log(cart);
       this.cart = cart;
-      console.log(this.cart)
     })
 
   }

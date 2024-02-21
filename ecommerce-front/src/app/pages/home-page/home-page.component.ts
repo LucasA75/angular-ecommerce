@@ -17,7 +17,12 @@ import { Cart } from '../../interfaces/Cart';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [IconContainerComponent, FontAwesomeModule, CardProductComponent, CartPopupComponent],
+  imports: [
+    IconContainerComponent,
+    FontAwesomeModule,
+    CardProductComponent,
+    CartPopupComponent,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
@@ -60,12 +65,9 @@ export class HomePageComponent implements OnInit {
     this.popupService.openPopup();
   }
 
-  getCartUser():void{
-    let cartUser = this.cartUserService.getCart()
-    if(cartUser == null){
-        cartUser = this.cartUserService.addCart()
-    }
-    console.log(cartUser);
+  getCartUser(): void {
+    this.cartUserService.cart$.subscribe(
+      (cart) => (this.cartUser = cart)
+    );
   }
-
 }
