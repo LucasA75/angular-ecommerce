@@ -67,7 +67,6 @@ export class HomePageComponent implements OnInit {
   }
 
   private showToast(message: string): void {
-    // Aquí puedes mostrar tu toast, por ejemplo, utilizando un elemento HTML
     const toastElement = document.createElement('div');
     toastElement.classList.add('toast');
     toastElement.textContent = message;
@@ -75,7 +74,7 @@ export class HomePageComponent implements OnInit {
 
     setTimeout(() => {
       document.body.removeChild(toastElement);
-    }, 3000); // Ocultar el toast después de 3 segundos
+    }, 3000); 
   }
 
   openPopup() {
