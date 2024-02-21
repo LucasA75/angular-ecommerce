@@ -11,5 +11,8 @@
     "concurrency": "concurrently \"npm run start:back\" \"npm run start:front\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "~8.2.2"
+  }
 }

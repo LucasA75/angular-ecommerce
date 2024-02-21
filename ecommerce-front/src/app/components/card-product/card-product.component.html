@@ -27,7 +27,7 @@
       <button
         class="w-fit px-3 py-1 bg-yellow-200 border border-black rounded relative z-10"
       >
-        <span class="text-sm font-semibold text-gray-900">
+        <span (click)="addProductCart()" (keydown)="addProductCart()" role="article" class="text-sm font-semibold text-gray-900">
           Add to card - ${{ product.price }}
         </span>
       </button>

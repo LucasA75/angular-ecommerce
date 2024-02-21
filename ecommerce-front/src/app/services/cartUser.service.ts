@@ -11,7 +11,7 @@ export class CartUser {
   private cartSubject = new Subject<Cart>();
   cart$ = this.cartSubject.asObservable();
 
-  addCart(): void {
+  addCart(): Cart {
     const newCart: Cart = {
         product: [],
         client: '',
@@ -20,6 +20,13 @@ export class CartUser {
         status: 'new'
     };
     this.cartSubject.next(newCart)
+    return newCart
+  }
+
+  getCart(): Cart {
+    const cart: Cart | null= null
+    this.cart$.subscribe((x) => Object.assign(cart!, x));
+    return cart!;
   }
 
   getProductCart(): Product[] {
@@ -39,6 +46,7 @@ export class CartUser {
       amount: 0,
       status: 'inProgress',
     };
+    console.log(updatedCart);
     this.cartSubject.next(updatedCart);
   }
 

@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { CartPopupComponent } from '../../components/cart-popup/cart-popup.component';
 import { PopupService } from '../../services/pop-up.service';
+import { CartUser } from '../../services/cartUser.service';
+import { Cart } from '../../interfaces/Cart';
 
 @Component({
   selector: 'app-home-page',
@@ -25,15 +27,18 @@ export class HomePageComponent implements OnInit {
   iconGift = faGift;
   products: Product[] | null = null;
   selectProductId: string | null = null;
-  
+  cartUser: Cart | null = null;
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private popupService: PopupService
+    private popupService: PopupService,
+    private cartUserService: CartUser
   ) {}
 
   ngOnInit(): void {
     this.getListProduct();
+    this.getCartUser();
   }
 
   getListProduct() {
@@ -54,4 +59,13 @@ export class HomePageComponent implements OnInit {
   openPopup() {
     this.popupService.openPopup();
   }
+
+  getCartUser():void{
+    let cartUser = this.cartUserService.getCart()
+    if(cartUser == null){
+        cartUser = this.cartUserService.addCart()
+    }
+    console.log(cartUser);
+  }
+
 }

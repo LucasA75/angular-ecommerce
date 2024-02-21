@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CartUser } from './../../services/cartUser.service';
+import { Component, OnInit } from '@angular/core';
 import { PopupService } from '../../services/pop-up.service';
 import { Cart } from '../../interfaces/Cart';
 
@@ -10,18 +11,26 @@ import { Cart } from '../../interfaces/Cart';
   styleUrl: './cart-popup.component.css',
 })
 export class CartPopupComponent implements OnInit {
-  
   isOpen = false;
-  @Input() cart : Cart | undefined = undefined
-  constructor(private popupService: PopupService) {}
+  cart: Cart | undefined = undefined;
+
+  constructor(private popupService: PopupService, private cartService: CartUser) {}
 
   ngOnInit() {
     this.popupService.isOpen$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
+
+    this.cartService.cart$.pipe().subscribe((cart) => {
+      console.log(cart);
+      this.cart = cart;
+      console.log(this.cart)
+    })
+
   }
 
   closePopup() {
     this.popupService.closePopup();
   }
+
 }
