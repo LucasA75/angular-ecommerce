@@ -13,6 +13,7 @@ import { CartPopupComponent } from '../../components/cart-popup/cart-popup.compo
 import { PopupService } from '../../services/pop-up.service';
 import { CartUser } from '../../services/cartUser.service';
 import { Cart } from '../../interfaces/Cart';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-home-page',
@@ -38,12 +39,16 @@ export class HomePageComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private popupService: PopupService,
-    private cartUserService: CartUser
+    private cartUserService: CartUser,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
     this.getListProduct();
     this.getCartUser();
+    this.toastService.toast$.subscribe(message => {
+      this.showToast(message);
+    });
   }
 
   getListProduct() {
@@ -59,6 +64,18 @@ export class HomePageComponent implements OnInit {
         return this.productService.getAllProducts();
       })
     );
+  }
+
+  private showToast(message: string): void {
+    // Aquí puedes mostrar tu toast, por ejemplo, utilizando un elemento HTML
+    const toastElement = document.createElement('div');
+    toastElement.classList.add('toast');
+    toastElement.textContent = message;
+    document.body.appendChild(toastElement);
+
+    setTimeout(() => {
+      document.body.removeChild(toastElement);
+    }, 3000); // Ocultar el toast después de 3 segundos
   }
 
   openPopup() {
