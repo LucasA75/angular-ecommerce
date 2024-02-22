@@ -11,7 +11,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
   variants: {
     extend: {
       display: ['group-focus']

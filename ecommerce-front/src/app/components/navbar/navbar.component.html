@@ -1,23 +1,56 @@
-<p>navbar works!</p>
-<header class="relative justify-center items-center gap-5 pt-20 bg-gray-100">
-  <button class="relative flex justify center items-center bg-slate-500 focus:outline-none shadow
-   text-gray-100 rounded focus:ring ring-gray-600 group"> 
-    <p class="px-4">
-      dropdown
-    </p>
-    <span class="border-l p-2 hover:bg-gray-300">
-      <svg aria-expanded="false" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
-    </svg>
-    </span>
-    <div class="absolute hidden group-focus:block top-full min-w-full w.max bg-slate-400 shadow-md mt-1 rounded transition">
-      <ul class="text-left border rounded">
-        <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 1</li>
-        <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 2</li>
-        <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 3</li>
-        <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 4</li>
-        <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 5</li>
+<header class=" bg-yellow-200 top-0 z-50">
+  <nav class="flex justify-between items-center w-[92%] bg-yellow-200 mx-auto">
+    <div>
+      <img class="w-9 md:w-9 xs:9" src="../../../assets/navbar/online-shopping.png">
+    </div>
+    <div class="md:static absolute bg-yellow-200 md:min-h-fit min-h-[60hv] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+      <ul class=" flex md:flex-row flex-col md:items-center  md:gap-[4vw] gap-8">
+        <li>
+          <a class="hover:text-gray-500" href="#">products</a>
+        </li>
+        <li>
+          <a class="hover:text-gray-500" href="#">products</a>
+        </li>
+        <li>
+          <a class="hover:text-gray-500" href="#">products</a>
+        </li>
+        <li>
+          <a class="hover:text-gray-500" href="#">products</a>
+        </li>
+        <li>
+          <a class="hover:text-gray-500" href="#">products</a>
+        </li>
+        <li>
+          <a class="hover:text-gray-500" href="#">products</a>
+        </li>
       </ul>
     </div>
-  </button>
+    <div>
+      <button class="bg-[#a6c1ee] text-white px-4 py-2 rounded-full hover:bg-[#51a3dacc]">
+        iniciar sesion 
+      </button>
+    </div>
+    <div>
+      <button class="relative flex justify center items-center bg-slate-500 focus:outline-none shadow
+      text-gray-100 rounded focus:ring ring-gray-600 group"> 
+        <p class="px-4">
+          dropdown
+        </p>
+        <span class="border-l p-2 hover:bg-gray-300">
+          <svg aria-expanded="false" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
+        </svg>
+        </span>
+        <div class="absolute hidden group-focus:block top-full min-w-full w.max bg-slate-400 shadow-md mt-1 rounded transition">
+          <ul class="text-left border rounded">
+            <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 1</li>
+            <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 2</li>
+            <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 3</li>
+            <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 4</li>
+            <li class="px-4 py-1 hover:bg-gray-100 border-b">menu list 5</li>
+          </ul>
+        </div>
+    </button>
+    </div>
+</nav>
 </header> 
