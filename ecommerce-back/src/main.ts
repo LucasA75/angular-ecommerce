@@ -11,6 +11,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
 
+  app.enableCors()
   const document = SwaggerModule.createDocument(app, options); 
   SwaggerModule.setup('docs', app, document); 
   

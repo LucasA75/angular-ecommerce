@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../../interfaces/Product';
 
 @Component({
   selector: 'app-card-product',
@@ -8,7 +10,14 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card-product.component.css'
 })
 export class CardProductComponent {
-  @Input() titleProduct = "Example title"
-  @Input() value = 123
-  @Input() description = "Description product"
+
+  constructor(private route : ActivatedRoute,  private router: Router  ){
+
+  }
+  @Input() product : Product | null = null
+
+  navegateToDetailProduct(productId : string){
+    this.router.navigate(["/product",productId])
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IconContainerComponent } from '../../components/icon-container/icon-container.component';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -6,7 +6,9 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faGift } from '@fortawesome/free-solid-svg-icons';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
 import { ProductService } from '../../services/product.service';
-import { ProductID } from '../../interfaces/ProductResponse';
+import { Product } from '../../interfaces/Product';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -15,14 +17,33 @@ import { ProductID } from '../../interfaces/ProductResponse';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit{
   iconCofee = faCoffee
   iconStar = faStar
   iconGift = faGift
-  products: ProductID[] | null
+  products: Product[] | null = null
+  selectProductId: string| null = null
 
-  constructor(product : ProductService) {
-    this.products = product.getProducts().filter(x => x.value.marca != "SIN MARCA").slice(0,15)
+  constructor(private productService : ProductService,private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    this.getListProduct()
+  }
+
+  getListProduct(){
+    return this.productService.getAllProducts().subscribe(data =>{
+      this.products = data
+    })
+  }
+
+  getProductId(){
+    this.route.paramMap.pipe(
+      switchMap(param =>{
+        this.selectProductId = param.get("id")
+        return this.productService.getAllProducts()
+      })
+    )
   }
 
 }
