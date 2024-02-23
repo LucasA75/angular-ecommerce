@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+} from '@nestjs/common';
 import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
@@ -16,7 +25,7 @@ export class ClientsController {
   }
 
   @Get()
-  findAll(@Req() request :Request) {
+  findAll(@Req() request: Request) {
     return this.clientsService.findAll(request);
   }
 

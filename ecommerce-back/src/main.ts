@@ -2,19 +2,18 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-
-async function bootstrap() { 
+async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
-  const options = new DocumentBuilder() 
+  const options = new DocumentBuilder()
     .setTitle('MongoDB ecommerce REST API')
     .setDescription('API REST for a example of ecommerceMongoDB')
     .setVersion('1.0')
     .build();
 
-  app.enableCors()
-  const document = SwaggerModule.createDocument(app, options); 
-  SwaggerModule.setup('docs', app, document); 
-  
+  app.enableCors();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('docs', app, document);
+
   await app.listen(3000);
 }
 bootstrap();

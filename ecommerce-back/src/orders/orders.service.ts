@@ -23,15 +23,17 @@ export class OrdersService {
       .exec();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return this.orderModel.findById(id).exec();
   }
 
-  async update(id: number, updateOrderDto: UpdateOrderDto) {
-    return this.orderModel.findByIdAndUpdate(id, updateOrderDto, { new: true }).exec();
+  async update(id: string, updateOrderDto: UpdateOrderDto) {
+    return this.orderModel
+      .findByIdAndUpdate(id, updateOrderDto, { new: true })
+      .exec();
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     return this.orderModel.findByIdAndDelete(id).exec();
   }
 }

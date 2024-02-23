@@ -10,20 +10,22 @@ import { ConfigModule } from '@nestjs/config';
 import { OrderDetailModule } from './order-detail/order-detail.module';
 import configuration from './configuration';
 
-const mongoConecction = configuration().database.url + configuration().database.db
+const mongoConecction =
+  configuration().database.url + configuration().database.db;
 
 @Module({
   imports: [
-    ConfigModule.forRoot({load: [configuration]}),
+    ConfigModule.forRoot({ load: [configuration] }),
     MongooseModule.forRoot(mongoConecction),
     ProductsModule,
-     ClientsModule,
-      OrdersModule,
-      CartModule,
-      OrderDetailModule],
-  controllers: [AppController], 
+    ClientsModule,
+    OrdersModule,
+    CartModule,
+    OrderDetailModule,
+  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
-  constructor(){}
+  constructor() {}
 }

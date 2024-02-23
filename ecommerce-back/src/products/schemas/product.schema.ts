@@ -1,11 +1,11 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose'; 
+import { Document } from 'mongoose';
 
-export type ProductDocument = Product & Document; 
+export type ProductDocument = Product & Document;
 
-@Schema() 
+@Schema()
 export class Product {
-  @Prop() 
+  @Prop()
   name: string;
 
   @Prop()
@@ -25,11 +25,11 @@ export class Product {
 
   @Prop()
   brand: string;
-  
+
   @Prop()
   stock: number;
 
-  @Prop([String]) 
+  @Prop([String])
   images: string[];
 }
 

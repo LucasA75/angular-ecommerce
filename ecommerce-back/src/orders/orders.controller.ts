@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   Req,
+  BadRequestException,
+  NotFoundException,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -14,14 +16,24 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ParseObjectIdPipe } from 'src/util/parse-object-id-pipe.pipe';
 import { Request } from 'express';
+import { ClientsService } from 'src/clients/clients.service';
 
 @ApiTags('order')
 @Controller('orders')
 export class OrdersController {
-  constructor(private readonly ordersService: OrdersService) {}
+  constructor(
+    private readonly ordersService: OrdersService,
+    private clientService: ClientsService,
+  ) {}
 
   @Post()
-  create(@Body() createOrderDto: CreateOrderDto) {
+  async create(@Body() createOrderDto: CreateOrderDto) {
+    const user = await this.clientService.findOne(
+      String(createOrderDto.client),
+    );
+    if (user == null) {
+      throw new BadRequestException('user not exits');
+    }
     return this.ordersService.create(createOrderDto);
   }
 
@@ -32,19 +44,23 @@ export class OrdersController {
 
   @Get(':id')
   findOne(@Param('id', ParseObjectIdPipe) id: string) {
-    return this.ordersService.findOne(+id);
+    return this.ordersService.findOne(id);
   }
 
   @Patch(':id')
-  update(
+  async update(
     @Param('id', ParseObjectIdPipe) id: string,
     @Body() updateOrderDto: UpdateOrderDto,
   ) {
-    return this.ordersService.update(+id, updateOrderDto);
+    const orderUpdated = await this.ordersService.update(id, updateOrderDto);
+    if (orderUpdated == null) {
+      throw new NotFoundException('order not found');
+    }
+    return;
   }
 
   @Delete(':id')
   remove(@Param('id', ParseObjectIdPipe) id: string) {
-    return this.ordersService.remove(+id);
+    return this.ordersService.remove(id);
   }
 }

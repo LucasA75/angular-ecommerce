@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ObjectId } from 'mongoose';
 import { Client } from 'src/clients/schemas/client.schema';
 import { Product } from 'src/products/schemas/product.schema';
 
@@ -12,8 +13,8 @@ export class CreateCartDto {
   @ApiProperty({ example: 2 })
   amount: number;
 
-  @ApiProperty({ example: "inProgress" })
-  status: string
+  @ApiProperty({ example: 'inProgress' })
+  status: string;
 
   @ApiProperty({
     example: [
