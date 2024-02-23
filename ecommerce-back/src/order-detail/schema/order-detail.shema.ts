@@ -1,11 +1,10 @@
-import { Prop, SchemaFactory } from "@nestjs/mongoose";
-import mongoose from "mongoose";
-import { Order } from "src/orders/schema/order.shema";
+import { Prop, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
+import { Order } from 'src/orders/schema/order.shema';
 
 export type OrderDetailDocument = OrderDetail & Document;
 
 export class OrderDetail {
-
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Order' })
   order: Order;
 
