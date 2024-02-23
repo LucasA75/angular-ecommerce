@@ -31,6 +31,4 @@ import { OrderDetailModule } from './order-detail/order-detail.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  constructor(){}
-}
+export class AppModule {}
