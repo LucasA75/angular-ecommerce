@@ -6,17 +6,22 @@ import { ClientsModule } from './clients/clients.module';
 import { OrdersModule } from './orders/orders.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CartModule } from './cart/cart.module';
-import { ConfigModule } from '@nestjs/config';
-import { OrderDetailModule } from './order-detail/order-detail.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './configuration';
-
-const mongoConecction =
-  configuration().database.url + configuration().database.db;
+import { OrderDetailModule } from './order-detail/order-detail.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ load: [configuration] }),
-    MongooseModule.forRoot(mongoConecction),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri:
+          configService.get<string>('MONGODB_URI') ||
+          'mongodb://127.0.0.1:27017/test',
+      }),
+      inject: [ConfigService],
+    }),
     ProductsModule,
     ClientsModule,
     OrdersModule,
@@ -27,5 +32,5 @@ const mongoConecction =
   providers: [AppService],
 })
 export class AppModule {
-  constructor() {}
+  constructor(){}
 }
