@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable } from '@nestjs/common';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { Client, ClientDocument } from './schemas/client.schema';
@@ -14,6 +14,9 @@ export class ClientsService {
   ) {}
 
   async create(createClientDto: CreateClientDto): Promise<Client> {
+    if(await this.uniqueEmail(createClientDto.email)){
+      throw new BadRequestException("this email exists")
+    }
     return this.clientModel.create(createClientDto);
   }
 
@@ -22,6 +25,11 @@ export class ClientsService {
       .find(request.query)
       .setOptions({ sanitizeFilter: true })
       .exec();
+  }
+
+  async uniqueEmail(email: string): Promise<boolean> { 
+    const emailExits = await this.clientModel.findOne({email: email})
+    return emailExits ? true : false
   }
 
   async findOne(id: string): Promise<ClientDocument> {

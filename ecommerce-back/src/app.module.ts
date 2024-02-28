@@ -16,7 +16,8 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forRootAsync({ 
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI') || "mongodb://127.0.0.1:27017/test", 
+        uri: configService.get<string>('MONGODB_URI') || "mongodb://127.0.0.1:27017/test",
+        writeConcern: {w:'majority'} 
       }),
       inject: [ConfigService],
     }),
