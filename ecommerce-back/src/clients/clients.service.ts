@@ -24,7 +24,7 @@ export class ClientsService {
       .exec();
   }
 
-  async findOne(id: string): Promise<Client> {
+  async findOne(id: string): Promise<ClientDocument> {
     return this.clientModel.findOne({ _id: id }).exec();
   }
 

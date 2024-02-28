@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
@@ -7,11 +7,12 @@ import { OrdersModule } from './orders/orders.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CartModule } from './cart/cart.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import configuration from './configuration';
+import { AuthModule } from './auth/auth.module';
+
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ load: [configuration] }),
+    ConfigModule.forRoot({ isGlobal:true }),
     MongooseModule.forRootAsync({ 
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -23,6 +24,7 @@ import configuration from './configuration';
     ClientsModule,
     OrdersModule,
     CartModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
