@@ -4,6 +4,7 @@ import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { Request } from 'express';
 import { ApiTags } from '@nestjs/swagger';
+import { Password } from './classes/Password';
 
 @Controller('clients')
 @ApiTags('client')
@@ -11,12 +12,14 @@ export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}
 
   @Post()
-  create(@Body() createClientDto: CreateClientDto) {
-    return this.clientsService.create(createClientDto);
+  async create(@Body() createClientDto: CreateClientDto) {
+    const hashPass =  new Password(createClientDto.password)
+    const clientCreate = new CreateClientDto(createClientDto.name,createClientDto.email,hashPass)
+    return await this.clientsService.create(clientCreate);
   }
 
   @Get()
-  findAll(@Req() request :Request) {
+  findAll(@Req() request :Request) { 
     return this.clientsService.findAll(request);
   }
 
