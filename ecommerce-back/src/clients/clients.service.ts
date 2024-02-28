@@ -27,12 +27,12 @@ export class ClientsService {
       .exec();
   }
 
-  async uniqueEmail(email: string): Promise<boolean>{ 
+  async uniqueEmail(email: string): Promise<boolean> { 
     const emailExits = await this.clientModel.findOne({email: email})
     return emailExits ? true : false
   }
 
-  async findOne(id: string): Promise<Client> {
+  async findOne(id: string): Promise<ClientDocument> {
     return this.clientModel.findOne({ _id: id }).exec();
   }
 
