@@ -1,18 +1,37 @@
-<div class="antialiased bg-gray-50 dark:bg-gray-900">
-  <app-side-bar />
-  <main class="p-4 md:ml-64 h-auto pt-20">
-    <div
-      class="border-2 border-dashed border-gray-300 my-5 rounded-lg dark:border-gray-600 h-32 md:h-64 flex justify-start items-center"
-    >
-    <div class="ml-11 flex flex-col gap-2 text-white">
-      <h3 class="text-4xl">¡Bienvenido, usuario!</h3>
-      <p>Haz que tu experiencia sea unica</p>
+@if(user){
+    <div class="antialiased bg-gray-50 dark:bg-gray-900">
+      <app-side-bar />
+      <main class="p-4 md:ml-64 h-auto pt-20">
+        <div
+          class="border-2 border-dashed border-gray-300 my-5 rounded-lg dark:border-gray-600 h-32 md:h-64 flex justify-start items-center"
+        >
+          <div class="ml-11 flex flex-col gap-2 text-black">
+            <h3 class="text-4xl">¡Bienvenido, {{user.name}}!</h3>
+            <p>Haz que tu experiencia sea unica</p>
+          </div>
+        </div>
+    
+        <div
+          class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"
+        >
+          <h4>Informacion usuario</h4>
+          <div class="flex justify-between w-3/4 ">
+              <div>
+                  <ul>
+                    <li>Nombre usuario: {{user.name}}</li>
+                    <li>Numero de compras: </li>
+                    <li>Direccion: </li>
+                    <li>
+                        <button>Informacion de facturacion</button>
+                    </li>
+                  </ul>
+              </div>
+              <div>
+                <p>Aca va la foto del usuario en un aside</p>
+                <img alt="img usuario"/>
+              </div>
+          </div>
+        </div>
+      </main>
     </div>
-  </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-      <div
-        class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"
-      ></div>
-    </div>
-  </main>
-</div>
+}

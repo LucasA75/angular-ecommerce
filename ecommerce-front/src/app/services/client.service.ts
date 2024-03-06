@@ -10,7 +10,7 @@ export class ClientService {
 
 
   private apiUrl = 'http://localhost:3000';
-  private urlClass = '/client'
+  private urlClass = '/clients'
 
   constructor(private http: HttpClient) {}
 
@@ -18,8 +18,8 @@ export class ClientService {
     return this.http.get<Array<Client>>(this.apiUrl + this.urlClass);
   }
 
-  getClient(id: string){
-    return this.http.get(this.apiUrl + this.urlClass + `/${id}`)
+  getClient(id: string): Observable<Client>{
+    return this.http.get<Client>(this.apiUrl + this.urlClass + `/${id}`)
   }
 
   createClient(client: Client){
